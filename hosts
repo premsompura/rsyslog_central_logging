@@ -1,0 +1,6 @@
+[rsyslog-shipper]
+172.16.8.23 ansible_ssh_user=vagrant
+172.16.8.24 ansible_ssh_user=vagrant
+
+[rsyslog-server]
+172.16.8.22 ansible_ssh_user=vagrant

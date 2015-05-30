@@ -1,0 +1,8 @@
+$ModLoad imfile
+$InputFileName /var/log/mongodb/mongodb.log
+$InputFileTag mongodb:
+$InputFileStateFile state-mongodb
+$InputRunFileMonitor
+
+if $programname == 'mongodb' then @{{ rsyslog_server }}:514
+if $programname == 'mongodb' then stop

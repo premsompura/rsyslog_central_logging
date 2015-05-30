@@ -1,0 +1,5 @@
+---
+- name: copy rsyslog.conf to server
+  copy: src=remote.conf dest=/etc/rsyslog.d/remote.conf
+  sudo: yes
+  notify: restart rsyslog

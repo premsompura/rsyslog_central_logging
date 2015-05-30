@@ -1,0 +1,9 @@
+$ModLoad imfile
+
+$InputFileName /var/log/upstart/*.log
+$InputFileTag upstart:
+$InputFileStateFile state-upstart
+$InputRunFileMonitor
+
+if $programname == 'upstart' then @{{ rsyslog_server }}:514
+if $programname == 'upstart' then stop

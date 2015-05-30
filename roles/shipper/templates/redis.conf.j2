@@ -1,0 +1,9 @@
+$ModLoad imfile
+
+$InputFileName /var/log/redis/redis-server.log
+$InputFileTag redis:
+$InputFileStateFile state-redis
+$InputRunFileMonitor
+
+if $programname == 'redis' then @{{ rsyslog_server }}:514
+if $programname == 'redis' then stop

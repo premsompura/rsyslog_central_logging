@@ -1,0 +1,10 @@
+---
+- name: add apt repository
+  apt_repository: repo='ppa:adiscon/v8-stable' state=present update_cache=yes
+  sudo: yes
+
+- name: install rsyslog
+  apt: name=rsyslog state=present
+  sudo: yes
+  notify: 
+    - restart rsyslog daemon

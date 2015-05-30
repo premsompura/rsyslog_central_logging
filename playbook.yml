@@ -1,0 +1,18 @@
+---
+- name: Setup rsyslog om all nodes
+  hosts: all
+  sudo: yes
+  roles:
+    - common
+
+- name: Configure rsyslog client
+  hosts: rsyslog-shipper
+  sudo: yes
+  roles:
+    - shipper
+
+- name: setup rsyslog server
+  hosts: rsyslog-server
+  sudo: yes
+  roles:
+    - logstore

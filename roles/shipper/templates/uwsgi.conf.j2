@@ -1,0 +1,7 @@
+$InputFileName /var/log/uwsgi/*
+$InputFileTag uwsgi:
+$InputFileStateFile state-uwsgi
+$InputRunFileMonitor
+
+if $programname == 'uwsgi' then @{{ rsyslog_server }}:514
+if $programname == 'uwsgi' then stop

@@ -1,0 +1,9 @@
+---
+programs:
+  - nginx
+  - uwsgi
+  - haproxy
+  - mongodb
+  - mysql
+  - redis
+  - upstart

@@ -1,0 +1,15 @@
+---
+- name: copy rsyslog conf to shippers
+  template: src=remote.conf.j2 dest=/etc/rsyslog.d/remote.conf
+  when: programs is defined
+  sudo: yes
+  notify: restart rsyslog
+
+
+- name: add program to rsyslog
+  template: src={{ item }}.conf.j2 dest=/etc/rsyslog.d/{{ item }}.conf
+  with_items:
+    - "{{ programs }}"
+  when: programs is defined
+  sudo: yes
+  notify: restart rsyslog

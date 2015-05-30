@@ -1,0 +1,15 @@
+$ModLoad imfile
+$InputFileName /var/log/nginx/access.log
+$InputFileTag nginx-access:
+$InputFileStateFile state-nginx-access
+$InputRunFileMonitor
+
+$InputFileName /var/log/nginx/error.log
+$InputFileTag nginx-error:
+$InputFileStateFile state-nginx-error
+$InputRunFileMonitor
+
+if $programname == 'nginx-access' then @{{ rsyslog_server }}:514
+if $programname == 'nginx-access' then stop
+if $programname == 'nginx-error' then @{{ rsyslog_server }}:514
+if $programname == 'nginx-error' then stop
